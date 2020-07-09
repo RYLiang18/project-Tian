@@ -12,5 +12,9 @@
         # **** from react-native-maps github *************************
         comment
     - Have to enable Google Maps API for maps to display
+- setup .gitignore so that API key is excluded:
+    - after doing gitignore, you have to manually remove files from git
+    https://stackoverflow.com/questions/4308610/how-to-ignore-certain-files-in-git/4308645#4308645
+    - wasted like 3 commits
     
     
