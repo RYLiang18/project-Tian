@@ -11,7 +11,7 @@
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <!-- **** from react-native-maps github *************************** -->
-      <!-- fuck off!!! -->
+      <!-- go kill yourself -->
       <meta-data
         android:name="com.google.android.geo.API_KEY"
         android:value="AIzaSyCpi1EGGeV9k3Kp12huaHBajKC3VFhV_f0"/>
