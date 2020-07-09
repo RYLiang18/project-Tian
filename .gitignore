@@ -1,3 +1,7 @@
+#Android and IOS
+android/
+ios/
+
 # OSX
 #
 .DS_Store
@@ -57,7 +61,3 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-
-# Android and ios
-/android
-/ios
