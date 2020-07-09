@@ -1,0 +1,16 @@
+[7/9] 
+- setup react-native-maps: https://github.com/react-native-community/react-native-maps/blob/master/docs/installation.md [!]
+    - setup react-native-maps with https://www.youtube.com/watch?v=4qq0GQPkfjI&t=224s
+    - supportLibVersion: https://developer.android.com/topic/libraries/support-library/revisions [!]
+    - good shit:
+        https://stackoverflow.com/questions/58806151/get-supportlibversion-playservicesversion-and-androidmapsutilsversion-va [!]
+    - NOTE: did not do step 3.2, install dependencies since we have 'project-wide-properties' done [?]
+    - NOTE: step 5, did not add 'new MapsPackage()' to MainApplication.java [?]
+    - had to run 'npx react-native unlink react-native-maps', not sure what it does [???]
+        - I was pretty nervous about breaking my code, but my project compiled, [FUCK YEA]
+    - all extra stuff I put into the /android folder marked by a 
+        # **** from react-native-maps github *************************
+        comment
+    - Have to enable Google Maps API for maps to display
+    
+    

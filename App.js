@@ -1,24 +1,30 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   View,
-  Text,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native';
 
 // components
 import Header from './components/Header'
+import Map from './components/Map'
 
 const App = () => {
   return (
     <View style={styles.container}>
-      <Header />
+      <Header style={styles.component} />
+      <Map style={styles.component} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'stretch'
+  },
+  component: {
   }
 });
 

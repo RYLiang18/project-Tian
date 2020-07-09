@@ -2,15 +2,14 @@ import React from 'react'
 import {
     View,
     Text,
-    StyleSheet,
-    TextBase
+    StyleSheet
 } from 'react-native'
 
 
 const Header = () => {
     return (
         <View style={styles.view}>
-            <Text style={styles.txt}>hello</Text>
+            <Text style={styles.txt}>Project 天</Text>
         </View>
     )
 }
@@ -18,10 +17,11 @@ const Header = () => {
 const styles = StyleSheet.create({
     view: {
         height: 60,
-        padding: 15,
-        backgroundColor: 'darkslateblue',
+        padding: 10,
+        backgroundColor: 'skyblue',
         margin: 5,
-        borderRadius: 10
+        borderRadius: 10,
+        borderWidth: 4
     },
     txt: {
         color: 'white',
