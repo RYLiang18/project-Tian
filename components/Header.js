@@ -16,17 +16,17 @@ const Header = () => {
 
 const styles = StyleSheet.create({
     view: {
-        height: 60,
-        padding: 10,
         backgroundColor: 'skyblue',
-        margin: 5,
         borderRadius: 10,
-        borderWidth: 4
+        borderWidth: 4,
+        flex: 1,
+        justifyContent: "space-around"
     },
     txt: {
         color: 'white',
         fontSize: 23,
-        textAlign: 'center'
+        fontWeight: "bold",
+        textAlign: 'center',
     }
 })
 

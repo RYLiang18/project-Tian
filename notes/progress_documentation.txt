@@ -16,5 +16,13 @@
     - after doing gitignore, you have to manually remove files from git
     https://stackoverflow.com/questions/4308610/how-to-ignore-certain-files-in-git/4308645#4308645
     - wasted like 3 commits
+[7/10]
+- learned flex:
+    - do style={{flex:1}} in each component to make each component take up its maximum space
+    and do flex again in app.js to make layout pretty
+    https://www.youtube.com/watch?v=R2eqAgR_KlU
+- can have multiple styles:
+    https://riptutorial.com/react-native/example/25428/adding-multiple-styles
+
     
     

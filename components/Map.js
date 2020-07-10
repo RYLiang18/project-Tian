@@ -4,7 +4,8 @@ import { View, StyleSheet } from 'react-native'
 
 const Map = () => {
     return (
-        <View style={styles.mapView} >
+        <View style={styles.container} >
+            {/* default jsx from react-native-maps github installation instructions*/}
             <MapView
                 provider={PROVIDER_GOOGLE}
                 region={{
@@ -13,20 +14,21 @@ const Map = () => {
                     latitudeDelta: 0.015,
                     longitudeDelta: 0.0121,
                 }}
-                style={styles.map}
+                style={styles.mapView}
             />
         </View>
     )
 }
 
+// default styles from react-native-maps github intallation instructions
 const styles = StyleSheet.create({
-    mapView: {
-        height: 400,
+    container: {
         borderRadius: 10,
-        margin: 5,
-        borderWidth: 6
+        borderWidth: 4,
+        overflow: "hidden",
+        flex: 1 // fills all available space in the flex
     },
-    map: {
+    mapView: {
         ...StyleSheet.absoluteFillObject
     }
 })
