@@ -2,18 +2,32 @@ import React from 'react'
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps'; // rendering Google Maps
 import { View, StyleSheet } from 'react-native'
 
+// component imports
+import WeatherCallout from './WeatherCallout'
+
 export default class Map extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    // render markers
     markers = () => {
         return this.props.filteredParkData.map(parkData => {
-            return <Marker
-                title={parkData.name}
-                coordinate={parkData.getLatLong()}
-                key={parkData.name}
-            />
+            return (
+                <Marker
+                    // title={parkData.name}
+                    coordinate={parkData.getLatLong()}
+                    key={parkData.name}
+                >
+                    <Callout>
+                        <WeatherCallout
+                            title={parkData.name}
+                            lat={parkData.lat}
+                            long={parkData.long}
+                        />
+                    </Callout>
+                </Marker>
+            )
         })
     }
 

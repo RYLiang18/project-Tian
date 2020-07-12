@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
   // fetch national park json from nps API
   componentDidMount() {
-    return fetch(config.API_URL + this.state.stateCode, {
+    fetch(config.API_URL + this.state.stateCode, {
       headers: {
         'X-Api-Key': config.API_KEY
         // to remove once I figure out how to use react-native-dotenv
