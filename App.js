@@ -10,6 +10,7 @@ import Header from './components/Header'
 import Map from './components/Map'
 import Parks from './components/Parks'
 
+// import API URL and key
 import config from './config'
 
 export default class App extends React.Component {
@@ -17,17 +18,14 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       npsParks: null,
-      isLoading: true
+      isLoading: true,
+      stateCode: "CA"
     }
   }
 
   // fetch national park json from nps API
   componentDidMount() {
-    // for testing
-    console.log(config.API_URL)
-    console.log(config.API_KEY)
-    
-    return fetch(config.API_URL, {
+    return fetch(config.API_URL + this.state.stateCode, {
       headers: {
         'X-Api-Key': config.API_KEY
         // to remove once I figure out how to use react-native-dotenv
@@ -46,16 +44,29 @@ export default class App extends React.Component {
       })
   }
 
+  // get names from the NPS Parks JSON
+  getParkNames(npsParks) {
+    names = []
+    npsParks.forEach(park => names.push(park.fullName))
+    return names
+  }
+
   render() {
     if (this.state.isLoading) {
       console.log("loading")
       return (
         <View style={loadingStyles.flexContainer}>
-          <Text style={loadingStyles.txt}>Loading...</Text>
+          <Text style={loadingStyles.txt}>
+            I swear it's loading...
+          </Text>
         </View>
       );
     } else {
       console.log("finished loading")
+
+      let npsParkNames = this.getParkNames(this.state.npsParks)
+      console.log(npsParkNames)
+
       return (
         <View style={styles.flexContainer}>
           <View style={[styles.header, styles.component]} >
@@ -65,7 +76,7 @@ export default class App extends React.Component {
             <Map />
           </View>
           <View style={[styles.parks, styles.component]}>
-            <Parks />
+            <Parks npsParkNames={npsParkNames}/>
           </View>
         </View>
       )

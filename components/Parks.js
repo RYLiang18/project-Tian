@@ -1,27 +1,53 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import {
+    View,
+    Text,
+    StyleSheet,
+    TextInput
+} from 'react-native'
+import { SearchableFlatList } from 'react-native-searchable-list'
 
-const Parks = () => {
-    return (
-        <View style={styles.parksView}>
-            <Text style={styles.txt}>Parks List Placeholder</Text>
-        </View>
-    )
+export default class Parks extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchTerm: "",
+        }
+    }
+
+    render() {
+        return (
+            <View>
+                <TextInput
+                    placeholder={"Search Parks"}
+                    onChangeText={(input) => this.setState({
+                        searchTerm: input
+                    })}
+                />
+                <SearchableFlatList
+                    data={this.props.npsParkNames}
+                    searchTerm={this.state.searchTerm}
+                    // flatlist props
+                    renderItem={
+                        ({ item }) => (
+                            <Text>{item}</Text>
+                        )
+                    }
+                    keyExtractor={item => item}
+                />
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
-    parksView: {
-        borderRadius: 10,
-        borderWidth: 4,
-        backgroundColor: 'lightgrey',
-        flex: 1, // fills all available space in the flex
-        justifyContent: 'space-around'
+    flexContainer: {
+        // pass
     },
-    txt: {
-        fontWeight: 'bold',
-        textAlign: "center",
-        fontSize: 23
+    txtIn: {
+        // pass
+    },
+    list: {
+        // pass
     }
 })
-
-export default Parks;
