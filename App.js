@@ -13,6 +13,10 @@ import Parks from './components/Parks'
 // import API URL and key
 import config from './config'
 
+// import classes to store NPS data
+import npsPark from './classes/npsPark'
+import npsParkList from './classes/npsParkList'
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -44,11 +48,22 @@ export default class App extends React.Component {
       })
   }
 
-  // get names from the NPS Parks JSON
-  getParkNames(npsParks) {
-    names = []
-    npsParks.forEach(park => names.push(park.fullName))
-    return names
+  // filter out raw park data w/o latlong and store parks
+  // as npsParkList
+  getFilteredParkData(npsParks) {
+    let filteredParkData = new npsParkList();
+    npsParks.forEach(park => {
+      if (park.latLong) {
+        filteredParkData.push(
+          new npsPark(
+            park.fullName,
+            park.latitude,
+            park.longitude
+          )
+        );
+      }
+    })
+    return filteredParkData;
   }
 
   render() {
@@ -64,8 +79,10 @@ export default class App extends React.Component {
     } else {
       console.log("finished loading")
 
-      let npsParkNames = this.getParkNames(this.state.npsParks)
-      console.log(npsParkNames)
+      let filteredParkData = this.getFilteredParkData(this.state.npsParks)
+      console.log(filteredParkData.parkList)
+      console.log(filteredParkData.getNames());
+      console.log(filteredParkData.getCoords())
 
       return (
         <View style={styles.flexContainer}>
@@ -73,10 +90,12 @@ export default class App extends React.Component {
             <Header />
           </View>
           <View style={[styles.map, styles.component]}>
-            <Map />
+            <Map
+              filteredParkData={filteredParkData}
+            />
           </View>
           <View style={[styles.parks, styles.component]}>
-            <Parks npsParkNames={npsParkNames}/>
+            <Parks npsParkNames={filteredParkData.getNames()} />
           </View>
         </View>
       )

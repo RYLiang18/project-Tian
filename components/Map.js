@@ -1,24 +1,32 @@
 import React from 'react'
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'; // rendering Google Maps
+import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps'; // rendering Google Maps
 import { View, StyleSheet } from 'react-native'
 
-const Map = () => {
-    return (
-        <View style={styles.container} >
-            {/* default jsx from react-native-maps github installation instructions*/}
-            <MapView
-                provider={PROVIDER_GOOGLE}
-                region={{
-                    latitude: 37.78825,
-                    longitude: -122.4324,
-                    latitudeDelta: 0.015,
-                    longitudeDelta: 0.0121,
-                }}
-                style={styles.mapView}
-            />
-        </View>
-    )
+export default class Map extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <View style={styles.container} >
+                {/* default jsx from react-native-maps github installation instructions*/}
+                <MapView
+                    provider={PROVIDER_GOOGLE}
+                    region={{
+                        latitude: 37.78825,
+                        longitude: -122.4324,
+                        latitudeDelta: 0.015,
+                        longitudeDelta: 0.0121,
+                    }}
+                    style={styles.mapView}
+                />
+            </View>
+        )
+    }
 }
+
+
 
 // default styles from react-native-maps github intallation instructions
 const styles = StyleSheet.create({
@@ -32,5 +40,3 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject
     }
 })
-
-export default Map
