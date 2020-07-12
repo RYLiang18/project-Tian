@@ -23,6 +23,11 @@
     https://www.youtube.com/watch?v=R2eqAgR_KlU
 - can have multiple styles:
     https://riptutorial.com/react-native/example/25428/adding-multiple-styles
+[7/11]
+- loaded in data from NPS API, but for the love of god, I couldn't get react-native-dotenv
+to work
+    - ended up just storing api url and api key in a config file, which is probably really really
+    sketch
 
     
     

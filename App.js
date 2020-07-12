@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   View,
   StyleSheet,
-  ActivityIndicator,
   Text
 } from 'react-native';
 
@@ -10,6 +9,8 @@ import {
 import Header from './components/Header'
 import Map from './components/Map'
 import Parks from './components/Parks'
+
+import config from './config'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,9 +23,14 @@ export default class App extends React.Component {
 
   // fetch national park json from nps API
   componentDidMount() {
-    return fetch('https://developer.nps.gov/api/v1/parks?', {
+    // for testing
+    console.log(config.API_URL)
+    console.log(config.API_KEY)
+    
+    return fetch(config.API_URL, {
       headers: {
-        'X-Api-Key': '8rKnkRfD0qGMrR01JpA8kZwn6c5GEOCUwX06SpFW'
+        'X-Api-Key': config.API_KEY
+        // to remove once I figure out how to use react-native-dotenv
       }
     })
       .then((response) => response.json())

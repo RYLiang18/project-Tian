@@ -1,5 +1,11 @@
+# **** STUFF I ADDED ******************************
 #Android 
 android/app/src/main/AndroidManifest.xml
+
+# NPS API and URL
+config.js
+
+# *************************************************
 
 # OSX
 #
