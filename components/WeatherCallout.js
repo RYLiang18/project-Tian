@@ -1,6 +1,9 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
+// import classes to save weather
+import Weather from '../classes/weather'
+
 // import openweathermaps API URL and key
 import config from '../config'
 
@@ -21,7 +24,7 @@ export default class WeatherCallout extends React.Component {
             .then((responseJson) => {
                 this.setState({
                     isLoading: false,
-                    weatherData: responseJson
+                    weatherData: new Weather(responseJson)
                 });
             })
             .catch(error => {
@@ -32,7 +35,7 @@ export default class WeatherCallout extends React.Component {
 
     title = () => {
         return (
-            <Text>{this.props.title}</Text>
+            <Text style={styles.title}>{this.props.title}</Text>
         )
     }
 
@@ -48,7 +51,10 @@ export default class WeatherCallout extends React.Component {
             return (
                 <View>
                     {this.title()}
-                    <Text>You utter fooool</Text>
+                    <Text style={styles.txt}>{"Description: " + this.state.weatherData.weatherDescription}</Text>
+                    <Text style={styles.txt}>{"Temperature: " + this.state.weatherData.temp + "F"}</Text>
+                    <Text style={styles.txt}>{"Min: " + this.state.weatherData.minTemp + "F"}</Text>
+                    <Text style={styles.txt}>{"Max: " + this.state.weatherData.maxTemp + "F"}</Text>
                 </View>
             )
         }
@@ -56,5 +62,10 @@ export default class WeatherCallout extends React.Component {
 }
 
 const styles = StyleSheet.create({
-
+    title: {
+        fontWeight: "bold"
+    },
+    txt: {
+        paddingTop: 2
+    }
 })
