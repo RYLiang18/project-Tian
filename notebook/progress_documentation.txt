@@ -28,6 +28,10 @@
 to work
     - ended up just storing api url and api key in a config file, which is probably really really
     sketch
+- [IMPORTANT]: if you request for all national parks in the US from NPS, you WILL get
+server: 500 error
+    - future plans: ask user for statecode upon app startup so we will never get
+    500 error
 
     
     
