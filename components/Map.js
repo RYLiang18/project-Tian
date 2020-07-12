@@ -7,6 +7,16 @@ export default class Map extends React.Component {
         super(props);
     }
 
+    markers = () => {
+        return this.props.filteredParkData.map(parkData => {
+            return <Marker
+                title={parkData.name}
+                coordinate={parkData.getLatLong()}
+                key={parkData.name}
+            />
+        })
+    }
+
     render() {
         return (
             <View style={styles.container} >
@@ -20,7 +30,9 @@ export default class Map extends React.Component {
                         longitudeDelta: 0.0121,
                     }}
                     style={styles.mapView}
-                />
+                >
+                    {this.markers()}
+                </MapView>
             </View>
         )
     }

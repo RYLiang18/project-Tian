@@ -4,4 +4,11 @@ export default class npsPark {
         this.lat = parseFloat(lat);
         this.long = parseFloat(long);
     }
+
+    getLatLong() {
+        return {
+            latitude: this.lat,
+            longitude: this.long
+        }
+    }
 }

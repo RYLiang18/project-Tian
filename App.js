@@ -91,7 +91,7 @@ export default class App extends React.Component {
           </View>
           <View style={[styles.map, styles.component]}>
             <Map
-              filteredParkData={filteredParkData}
+              filteredParkData={filteredParkData.parkList}
             />
           </View>
           <View style={[styles.parks, styles.component]}>

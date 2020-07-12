@@ -32,6 +32,11 @@ to work
 server: 500 error
     - future plans: ask user for statecode upon app startup so we will never get
     500 error
+[7/12]
+- finally created classes for NPS data. Each national park has name, longitude, and latitude
+    - would be a huge pain in the ass if I had to write a getNames() or getCoords() in every
+    classes
+    - lowkey can't imagine how the fuck I forgot about OOP shame on me
 
     
     
