@@ -9,6 +9,7 @@ import {
 import Header from './components/Header'
 import Map from './components/Map'
 import Parks from './components/Parks'
+import IntroPage from './components/IntroPage'
 
 // import API URL and key
 import config from './config'
@@ -22,30 +23,34 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       npsParks: null,
-      isLoading: true,
-      stateCode: "CA"
+      stateCode: "",
+      stateName: "",
+      state: state.waitingForStateCode
     }
   }
 
   // fetch national park json from nps API
   componentDidMount() {
-    fetch(config.API_URL + this.state.stateCode, {
-      headers: {
-        'X-Api-Key': config.API_KEY
-        // to remove once I figure out how to use react-native-dotenv
-      }
-    })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({
-          isLoading: false,
-          npsParks: responseJson.data
-        });
+    if (this.state.state == state.loadingData) {
+      console.log("reached")
+      fetch(config.API_URL + this.state.stateCode, {
+        headers: {
+          'X-Api-Key': config.API_KEY
+          // to remove once I figure out how to use react-native-dotenv
+        }
       })
-      .catch((error) => {
-        console.log("nps made an insane error");
-        console.log(error)
-      })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          this.setState({
+            state: state.finishedLoadingData,
+            npsParks: responseJson.data
+          });
+        })
+        .catch((error) => {
+          console.log("nps made an insane error");
+          console.log(error)
+        })
+    }
   }
 
   // filter out raw park data w/o latlong and store parks
@@ -66,9 +71,24 @@ export default class App extends React.Component {
     return filteredParkData;
   }
 
+  // callback
+  // really, really sketch
+  chooseState = (stateCodeIn, stateNameIn) => {
+    this.setState({
+      stateCode: stateCodeIn,
+      stateName: stateNameIn,
+      state: state.loadingData
+    }, () => {
+      this.componentDidMount()
+    })
+  }
+
   render() {
-    if (this.state.isLoading) {
-      console.log("loading")
+    if (this.state.state == state.waitingForStateCode) {
+      return (
+        <IntroPage chooseState={this.chooseState} />
+      )
+    } else if (this.state.state == state.loadingData) {
       return (
         <View style={loadingStyles.flexContainer}>
           <Text style={loadingStyles.txt}>
@@ -76,7 +96,7 @@ export default class App extends React.Component {
           </Text>
         </View>
       );
-    } else {
+    } else if (this.state.state == state.finishedLoadingData) {
       console.log("finished loading")
 
       let filteredParkData = this.getFilteredParkData(this.state.npsParks)
@@ -139,3 +159,8 @@ const loadingStyles = StyleSheet.create({
   }
 })
 
+const state = Object.freeze({
+  waitingForStateCode: 1,
+  loadingData: 2,
+  finishedLoadingData: 3
+})

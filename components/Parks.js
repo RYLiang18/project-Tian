@@ -7,6 +7,9 @@ import {
 } from 'react-native'
 import { SearchableFlatList } from 'react-native-searchable-list'
 
+// component imports
+import ParkItem from './ParkItem'
+
 export default class Parks extends React.Component {
     constructor(props) {
         super(props);
@@ -17,24 +20,29 @@ export default class Parks extends React.Component {
 
     render() {
         return (
-            <View>
-                <TextInput
-                    placeholder={"Search Parks"}
-                    onChangeText={(input) => this.setState({
-                        searchTerm: input
-                    })}
-                />
-                <SearchableFlatList
-                    data={this.props.npsParkNames}
-                    searchTerm={this.state.searchTerm}
-                    // flatlist props
-                    renderItem={
-                        ({ item }) => (
-                            <Text>{item}</Text>
-                        )
-                    }
-                    keyExtractor={item => item}
-                />
+            <View style={styles.flexContainer}>
+                <View style={styles.txtView}>
+                    <TextInput
+                        style={styles.txtIn}
+                        placeholder={"Search Parks"}
+                        onChangeText={(input) => this.setState({
+                            searchTerm: input
+                        })}
+                    />
+                </View>
+                <View style={styles.list}>
+                    <SearchableFlatList
+                        data={this.props.npsParkNames}
+                        searchTerm={this.state.searchTerm}
+                        // flatlist props
+                        renderItem={
+                            ({ item }) => (
+                                <ParkItem parkName={{ item }} />
+                            )
+                        }
+                        keyExtractor={item => item}
+                    />
+                </View>
             </View>
         )
     }
@@ -42,12 +50,22 @@ export default class Parks extends React.Component {
 
 const styles = StyleSheet.create({
     flexContainer: {
-        // pass
+        flex: 1,
+        flexDirection: "column"
+    },
+    txtView: {
+        borderWidth: 3,
+        borderRadius: 10,
+        flex: 1
     },
     txtIn: {
-        // pass
+        marginLeft: 2
     },
     list: {
-        // pass
+        flex: 6,
+        borderWidth: 3,
+        borderRadius: 10,
+        marginTop: 5,
+        overflow: "hidden"
     }
 })

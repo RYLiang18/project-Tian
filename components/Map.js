@@ -10,6 +10,10 @@ export default class Map extends React.Component {
         super(props);
     }
 
+    zoomToMarker(markerID){
+        
+    }
+
     // render markers
     markers = () => {
         return this.props.filteredParkData.map(parkData => {
@@ -17,7 +21,7 @@ export default class Map extends React.Component {
                 <Marker
                     // title={parkData.name}
                     coordinate={parkData.getLatLong()}
-                    key={parkData.name}
+                    identifier={parkData.name}
                 >
                     <Callout>
                         <WeatherCallout
@@ -58,7 +62,7 @@ export default class Map extends React.Component {
 const styles = StyleSheet.create({
     container: {
         borderRadius: 10,
-        borderWidth: 4,
+        borderWidth: 3,
         overflow: "hidden",
         flex: 1 // fills all available space in the flex
     },
