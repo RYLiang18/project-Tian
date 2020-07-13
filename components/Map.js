@@ -10,10 +10,6 @@ export default class Map extends React.Component {
         super(props);
     }
 
-    zoomToMarker(markerID){
-        
-    }
-
     // render markers
     markers = () => {
         return this.props.filteredParkData.map(parkData => {
@@ -22,6 +18,7 @@ export default class Map extends React.Component {
                     // title={parkData.name}
                     coordinate={parkData.getLatLong()}
                     identifier={parkData.name}
+                    key={parkData.name}
                 >
                     <Callout>
                         <WeatherCallout
@@ -42,8 +39,8 @@ export default class Map extends React.Component {
                 <MapView
                     provider={PROVIDER_GOOGLE}
                     region={{
-                        latitude: 37.78825,
-                        longitude: -122.4324,
+                        latitude: this.props.initLat,
+                        longitude: this.props.initLong,
                         latitudeDelta: 0.015,
                         longitudeDelta: 0.0121,
                     }}

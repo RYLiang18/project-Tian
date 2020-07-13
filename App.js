@@ -30,7 +30,7 @@ export default class App extends React.Component {
   }
 
   // fetch national park json from nps API
-  componentDidMount() {
+  fetchNPSData = () => {
     if (this.state.state == state.loadingData) {
       console.log("reached")
       fetch(config.API_URL + this.state.stateCode, {
@@ -51,6 +51,14 @@ export default class App extends React.Component {
           console.log(error)
         })
     }
+  }
+
+  componentDidMount() {
+    this.fetchNPSData();
+  }
+
+  componentDidUpdate() {
+    this.fetchNPSData();
   }
 
   // filter out raw park data w/o latlong and store parks
@@ -104,6 +112,11 @@ export default class App extends React.Component {
       console.log(filteredParkData.getNames());
       console.log(filteredParkData.getCoords())
 
+      let initLat = filteredParkData.parkList[0].lat
+      let initLong = filteredParkData.parkList[0].long
+      console.log(initLat);
+      console.log(initLong)
+
       return (
         <View style={styles.flexContainer}>
           <View style={[styles.header, styles.component]} >
@@ -112,6 +125,8 @@ export default class App extends React.Component {
           <View style={[styles.map, styles.component]}>
             <Map
               filteredParkData={filteredParkData.parkList}
+              initLat={initLat}
+              initLong={initLong}
             />
           </View>
           <View style={[styles.parks, styles.component]}>

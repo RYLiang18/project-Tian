@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginTop: 2.5,
         marginBottom: 2.5,
-        borderRadius: 10
+        borderRadius: 10,
+        flex: 1
     },
     txtIn: {
         marginLeft: 2
@@ -103,8 +104,10 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginTop: 2.5,
         marginBottom: 2.5,
-        borderRadius: 10,
+        borderRadius: 4,
         backgroundColor: "#DDDDDD",
+        paddingTop: 5,
+        paddingBottom: 5
     },
     txt: {
         textAlign: "center",
@@ -117,7 +120,8 @@ const styles = StyleSheet.create({
         marginTop: 2.5,
         marginBottom: 2.5,
         borderRadius: 10,
-        backgroundColor: "skyblue"
+        backgroundColor: "skyblue",
+        flex: 11
     }
 })
 

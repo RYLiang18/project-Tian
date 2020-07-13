@@ -1,4 +1,4 @@
 TODO:
-- [low] create another component that asks user for state code before entering app
-    - stateCode currently saved in <App> state
-- parse long and lat from parks and feed to google maps
+- [HIGH] get google maps to load anywhere I drag
+- [HIGH] upon clicking a <ParkItem>, fitToSuppliedMarker()
+- [low] responsive text size, margin, and padding
