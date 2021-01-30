@@ -5,10 +5,9 @@
   Project 天
 </h1>
 <h5 align = "center">
-Check out my [notebook](notebook) for my progress on this project
+Check out my <a href = "https://github.com/RYLiang18/project-Tian/tree/master/notebook">notebook</a> for my progress on this project
 </h5>
 <br>
-
 
 Project 天 (pronounced Ti-en; defn. "Sky" in Mandarin) is a React Native app that maps out live temperature and weather data for ~500 historical sites and national parks across the United States in Google Maps. In the last couple years, I have become more in-tune with nature, going out hiking friends almost every week and trekking across almost every trail in Orange County, California. In the summer of 2020 while interviewing for a fullstack position at SpringGem Weather Information, I was tasked a coding challenge to create a React Native app that reported live temperature and weather data for several arbitrary geographical coordinates. Inspired by this challenge, I had the idea to apply the challenge’s concept of mapping out live weather data to United States National Parks. And that was how Project 天 was conceived.
 
